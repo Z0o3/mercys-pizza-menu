@@ -1,0 +1,5 @@
+Pon aqui las fotos de tus productos (jpg, cuadradas, ~600x600 px).
+El nombre de cada archivo esta en js/menu.js, campo "img":
+natural.jpg, jamon-de-pierna.jpg, pepperoni.jpg, hawaiana.jpg, ...
+Si falta una foto, se muestra una ilustracion de respaldo.
+logo.png: recorte del logo de la foto del menu. Reemplazalo por el logo original.

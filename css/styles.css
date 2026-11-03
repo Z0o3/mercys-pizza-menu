@@ -1,0 +1,101 @@
+:root {
+  --red: #C62828; --red-dark: #9C1C1C; --green: #2E6B3F; --ink: #2A1A12;
+  --paper: #FFFCF5; --line: #E4D7BD; --muted: #6A5548; --wa: #25D366;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 64px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 16px/1.5 "Nunito", "Segoe UI", system-ui, sans-serif; padding-bottom: 88px;
+}
+h1, h2, h3 { font-family: "Bree Serif", Georgia, "Times New Roman", serif; font-weight: 400; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+/* Mantel de cuadros */
+.gingham {
+  height: 44px; background-color: #fff;
+  background-image: linear-gradient(90deg, rgba(198,40,40,.62) 50%, transparent 50%), linear-gradient(rgba(198,40,40,.62) 50%, transparent 50%);
+  background-size: 22px 22px;
+}
+
+/* Encabezado */
+.hero { text-align: center; padding: 26px 16px 22px; border-bottom: 4px double var(--ink); }
+.logo { width: 112px; height: 112px; border-radius: 50%; border: 4px solid var(--red); object-fit: cover; background: #fff; }
+.hero h1 { color: var(--red); font-size: clamp(2.6rem, 10vw, 4.2rem); line-height: 1.05; margin-top: 10px; }
+.hero-sub { margin: 4px 0 0; font-family: "Bree Serif", Georgia, serif; font-size: 1.4rem; color: var(--green); }
+.hero-hint { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
+
+/* Navegación */
+.nav {
+  position: sticky; top: 0; z-index: 20; display: flex; gap: 6px; overflow-x: auto;
+  background: var(--green); padding: 8px 12px; border-bottom: 3px solid var(--ink);
+}
+.nav a {
+  color: #fff; text-decoration: none; font-weight: 800; white-space: nowrap;
+  padding: 8px 16px; border-radius: 999px; border: 2px solid transparent;
+}
+.nav a:first-child { margin-left: auto; }
+.nav a:last-child { margin-right: auto; }
+.nav a:hover { border-color: #fff; }
+.nav a:focus-visible { outline-color: #fff; }
+
+/* Secciones */
+.sec { max-width: 1040px; margin: 0 auto; padding: 30px 16px 8px; }
+.sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+.sec-head h2 { color: var(--red); font-size: 2.1rem; line-height: 1.1; }
+.sec-head .note { color: var(--muted); font-size: .9rem; }
+.sec-head::after { content: ""; flex: 1; order: 3; border-bottom: 3px dotted var(--ink); transform: translateY(-6px); }
+
+/* Tarjetas */
+.cards, .rows { list-style: none; margin: 0; padding: 0; }
+.cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
+.card { background: #fff; border: 1.5px solid var(--line); border-left: 6px solid var(--red); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; }
+.top { display: flex; gap: 14px; align-items: center; }
+.thumb { width: 96px; height: 96px; flex: none; border-radius: 50%; object-fit: cover; border: 3px solid var(--line); background: #FBEFD5; }
+.txt h3 { font-size: 1.3rem; line-height: 1.2; }
+.txt p { margin: 3px 0 0; color: var(--muted); font-size: .95rem; line-height: 1.35; }
+.badge { display: inline-block; vertical-align: middle; font: 800 .7rem/1 "Nunito", sans-serif; background: var(--ink); color: #fff; padding: 4px 8px; border-radius: 999px; margin-left: 4px; }
+
+.sizes { display: grid; grid-template-columns: repeat(auto-fit, minmax(58px, 1fr)); gap: 6px; margin-top: 12px; }
+.size {
+  font: inherit; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 1px;
+  padding: 6px 2px; background: #fff; color: var(--ink); border: 1.5px solid var(--red); border-radius: 8px;
+}
+.size .lbl { font-size: .72rem; color: var(--muted); }
+.size .pr { font-weight: 800; font-size: 1.05rem; }
+.size[aria-pressed="true"] { background: var(--red); color: #fff; }
+.size[aria-pressed="true"] .lbl { color: #fff; }
+
+.order {
+  margin-top: 12px; align-self: flex-start; text-decoration: none; font-weight: 800; font-size: .95rem;
+  background: var(--green); color: #fff; padding: 9px 16px; border-radius: 999px;
+}
+.order:hover { background: #245531; }
+
+/* Lista tipo menú (bebidas) */
+.rows { max-width: 560px; }
+.row { display: flex; align-items: baseline; gap: 8px; padding: 9px 0; font-size: 1.1rem; }
+.row .dots { flex: 1; border-bottom: 2px dotted #A89578; transform: translateY(-4px); }
+.row .p { font-weight: 800; }
+
+/* Pie */
+.footer { margin-top: 40px; background: var(--green); color: #fff; text-align: center; }
+.footer-in { padding: 20px 16px 24px; }
+.footer-name { font-family: "Bree Serif", Georgia, serif; font-size: 1.6rem; margin: 0 0 4px; }
+.footer p { margin: 0; }
+
+/* WhatsApp flotante */
+.wa-float {
+  position: fixed; right: 14px; bottom: 14px; z-index: 30; display: flex; align-items: center; gap: 8px;
+  background: var(--wa); color: #0B2E13; font-weight: 800; text-decoration: none;
+  padding: 12px 18px; border-radius: 999px; border: 2px solid #0B2E13;
+}
+.wa-float:hover { background: #1fbd5a; }
+
+@media (min-width: 760px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .thumb { width: 112px; height: 112px; }
+  .nav { gap: 12px; }
+}
