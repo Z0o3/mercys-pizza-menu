@@ -13,7 +13,9 @@ window.MENU = {
     {
       id: "pizzas", title: "Pizzas", note: "Cinco tamaños", kind: "pizza", layout: "cards",
       sizes: ["Chica", "Mediana", "Grande", "Familiar", "Giganta"],
-      msg: "Hola, me gustaría pedir una pizza {name}, tamaño {size}.",
+      prefix: "Pizza ",
+      /* MEDIDAS: una por tamaño, en el mismo orden que "sizes". Ejemplo: ["20 x 20 cm", "25 x 25 cm", ...]. Vacío = no se muestra. */
+      cm: [],
       items: [
         { name: "Natural", desc: "Salsa italiana, queso y especias", p: [115,160,180,200,290], img: "natural.jpg", tone: "natural" },
         { name: "Jamón de pierna", desc: "", p: [115,160,160,200,290], img: "jamon-de-pierna.jpg", tone: "jamon" },
@@ -39,7 +41,7 @@ window.MENU = {
     {
       id: "spaghetti", title: "Spaghetti", note: "Orden o media orden", kind: "pasta", layout: "cards",
       sizes: ["Orden", "½ Orden"],
-      msg: "Hola, me gustaría pedir spaghetti {name}, {size}.",
+      prefix: "Spaghetti ",
       items: [
         { name: "Blanco", desc: "Jamón y queso", p: [100,60], img: "spaghetti-blanco.jpg", tone: "blanco" },
         { name: "Boloñesa", desc: "Carne molida", p: [100,60], img: "spaghetti-bolonesa.jpg", tone: "bolonesa" }
@@ -48,7 +50,7 @@ window.MENU = {
     {
       id: "ensaladas", title: "Ensaladas", note: "Orden o media orden", kind: "salad", layout: "cards",
       sizes: ["Orden", "½ Orden"],
-      msg: "Hola, me gustaría pedir la ensalada {name}, {size}.",
+      prefix: "Ensalada ",
       items: [
         /* VERIFICAR PRECIOS: en la foto del menú se cortan ("$10…" y "$6…"). Se asumió $100 y $60. */
         { name: "Mercy's", desc: "De la casa", p: [100,60], img: "ensalada-mercys.jpg", tone: "casa" },

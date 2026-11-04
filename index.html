@@ -4,47 +4,107 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mercy's Pizza | Menú</title>
-  <meta name="description" content="Menú de Mercy's Pizza: pizzas, spaghetti, ensaladas y bebidas. Pide por WhatsApp.">
-  <meta name="theme-color" content="#2E6B3F">
+  <meta name="description" content="Menú de Mercy's Pizza: pizzas, spaghetti, ensaladas y bebidas. Arma tu pedido y envíalo por WhatsApp.">
+  <meta name="theme-color" content="#3F2216">
   <link rel="icon" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Oswald:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="gingham" aria-hidden="true"></div>
+<div class="plaid" aria-hidden="true"></div>
 
-  <header class="hero">
-    <img class="logo" src="images/logo.png" alt="Logotipo de Mercy's Pizza" width="112" height="112">
-    <h1>Mercy's Pizza</h1>
-    <p class="hero-sub">Menú</p>
-    <p class="hero-hint">Elige el tamaño y pide directo por WhatsApp.</p>
-  </header>
+<header class="hero wood">
+  <span class="lamp l1" aria-hidden="true"></span><span class="lamp l2" aria-hidden="true"></span>
+  <img class="logo" src="images/logo.png" alt="Logotipo de Mercy's Pizza" width="120" height="120">
+  <h1>Mercy's Pizza</h1>
+  <p class="hero-sub"><span>Menú</span></p>
+  <p class="hero-hint">Arma tu pedido, ve cuánto es y envíalo por WhatsApp. Pagas al recoger o cuando te lo entreguen.</p>
+</header>
+<div class="piping" aria-hidden="true"></div>
 
-  <nav class="nav" aria-label="Secciones del menú">
-    <a href="#pizzas">Pizzas</a>
-    <a href="#spaghetti">Spaghetti</a>
-    <a href="#ensaladas">Ensaladas</a>
-    <a href="#bebidas">Bebidas</a>
-  </nav>
+<nav class="nav" aria-label="Secciones del menú">
+  <a href="#pizzas">Pizzas</a>
+  <a href="#spaghetti">Spaghetti</a>
+  <a href="#ensaladas">Ensaladas</a>
+  <a href="#bebidas">Bebidas</a>
+  <a href="#local">Nuestro local</a>
+</nav>
 
-  <main id="menu"></main>
+<main id="menu"></main>
 
-  <footer class="footer">
-    <div class="gingham" aria-hidden="true"></div>
-    <div class="footer-in">
-      <p class="footer-name">Mercy's Pizza</p>
-      <p>Pedidos por WhatsApp: <a id="footer-wa" href="#">411 101 3641</a></p>
-    </div>
-  </footer>
+<section class="sec" id="local">
+  <div class="sec-head"><h2>Nuestro local</h2></div>
+  <div class="gallery">
+    <figure><img src="images/local-barra.jpg" alt="La barra con la vitrina de pizzas, la máquina de aguas frescas y un refrigerador vintage Philco" loading="lazy"><figcaption>La barra y el refri vintage</figcaption></figure>
+    <figure><img src="images/local-cortinas.jpg" alt="Cortinas de cuadros rojos y la barra en forma de camioneta roja" loading="lazy"><figcaption>Cortinas de cuadros y barra-camioneta</figcaption></figure>
+    <figure><img src="images/local-mesas.jpg" alt="Mesas de madera con sillas rojas y crema al estilo años cincuenta" loading="lazy"><figcaption>Mesas y sillas de diner</figcaption></figure>
+  </div>
+</section>
 
-  <a id="wa-float" class="wa-float" href="#" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    <span>Pedir por WhatsApp</span>
+<footer class="footer wood">
+  <div class="plaid" aria-hidden="true"></div>
+  <div class="footer-in">
+    <p class="footer-name">Mercy's Pizza</p>
+    <p>Pedidos por WhatsApp: <a id="footer-wa" href="#">411 101 3641</a></p>
+  </div>
+</footer>
+
+<!-- Barra inferior: carrito + WhatsApp -->
+<div class="dock">
+  <button id="cart-open" class="cart-btn" type="button" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0020 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+    <span class="cart-label">Mi pedido</span>
+    <span id="cart-count" class="count">0</span>
+    <span id="cart-sum" class="sum">$0</span>
+  </button>
+  <a id="wa-float" class="wa-round" href="#" target="_blank" rel="noopener" aria-label="Preguntar por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
+</div>
 
-  <script src="js/menu.js"></script>
-  <script src="js/app.js"></script>
+<!-- Carrito -->
+<dialog id="cart-dialog" aria-labelledby="cart-title">
+  <div class="sheet">
+    <div class="sheet-head wood">
+      <h2 id="cart-title">Mi pedido</h2>
+      <button id="cart-close" type="button" class="x" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="sheet-body">
+      <p id="cart-empty" class="empty">Tu pedido está vacío. Agrega algo del menú y aquí verás tu total.</p>
+      <div id="cart-full" hidden>
+        <ul id="cart-lines" class="lines"></ul>
+        <div class="total"><span>Total a pagar</span><strong id="cart-total">$0</strong></div>
+        <p class="pay-note">No se paga en línea: pagas al recoger tu pedido o cuando te lo entreguen.</p>
+
+        <fieldset class="mode">
+          <legend>¿Cómo lo quieres?</legend>
+          <label><input type="radio" name="mode" value="recoger" checked> Paso a recoger</label>
+          <label><input type="radio" name="mode" value="domicilio"> A domicilio</label>
+        </fieldset>
+
+        <label class="fld">Tu nombre
+          <input id="f-name" type="text" autocomplete="name" placeholder="¿A nombre de quién?">
+        </label>
+        <label class="fld" id="addr-wrap" hidden>Dirección de entrega
+          <input id="f-addr" type="text" autocomplete="street-address" placeholder="Calle, número y colonia">
+        </label>
+        <label class="fld">Notas (opcional)
+          <textarea id="f-notes" rows="2" placeholder="Sin cebolla, extra queso..."></textarea>
+        </label>
+
+        <p id="cart-err" class="err" role="alert" hidden></p>
+        <a id="cart-send" class="send" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><span>Enviar pedido por WhatsApp</span></a>
+        <button id="cart-clear" type="button" class="linkbtn">Vaciar pedido</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<p id="live" class="sr" aria-live="polite"></p>
+
+<script src="js/menu.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
