@@ -11,31 +11,40 @@ window.MENU = {
 
   sections: [
     {
-      id: "pizzas", title: "Pizzas", note: "Cinco tamaños", kind: "pizza", layout: "cards",
-      sizes: ["Chica", "Mediana", "Grande", "Familiar", "Giganta"],
+      id: "pizzas", title: "Pizzas", note: "Seis tamaños", kind: "pizza", layout: "cards",
+      sizes: ["Personal", "Chica", "Mediana", "Grande", "Familiar", "Giganta"],
+      def: 1,   /* tamaño preseleccionado (1 = Chica) */
       prefix: "Pizza ",
-      /* MEDIDAS: una por tamaño, en el mismo orden que "sizes". Ejemplo: ["20 x 20 cm", "25 x 25 cm", ...]. Vacío = no se muestra. */
-      cm: [],
+      /* Detalle por tamaño (mismo orden que "sizes"). shape: "round" (redonda) o "square" (cuadrada).
+         cm: medida en cm (vacío = no se muestra). n: rebanadas/porciones. Cambia el icono según el tamaño elegido. */
+      details: [
+        { shape: "round",  cm: "20 cm", n: 6 },   /* Personal */
+        { shape: "square", cm: "",      n: 9 },   /* Chica */
+        { shape: "square", cm: "",      n: 12 },  /* Mediana */
+        { shape: "square", cm: "",      n: 12 },  /* Grande */
+        { shape: "square", cm: "",      n: 16 },  /* Familiar */
+        { shape: "square", cm: "",      n: 24 }   /* Giganta */
+      ],
       items: [
-        { name: "Natural", desc: "Salsa italiana, queso y especias", p: [115,160,180,200,290], img: "natural.jpg", tone: "natural" },
-        { name: "Jamón de pierna", desc: "", p: [115,160,160,200,290], img: "jamon-de-pierna.jpg", tone: "jamon" },
-        { name: "Salami italiano", desc: "", p: [115,160,160,200,290], img: "salami-italiano.jpg", tone: "pepperoni" },
-        { name: "Cebollas españolas", desc: "", p: [115,160,160,200,290], img: "cebollas-espanolas.jpg", tone: "cebolla" },
-        { name: "Champiñones al ajillo", desc: "O solos", p: [115,160,180,200,290], img: "champinones-al-ajillo.jpg", tone: "champinon" },
-        { name: "Tocino y cebolla", desc: "", p: [115,160,180,200,290], img: "tocino-y-cebolla.jpg", tone: "tocino" },
-        { name: "Pepperoni", desc: "", p: [115,160,180,200,290], img: "pepperoni.jpg", tone: "pepperoni" },
-        { name: "Mercy's Especial", desc: "Un poco de todo", p: [115,160,180,200,290], img: "mercys-especial.jpg", tone: "mix" },
-        { name: "Carnes frías selectas", desc: "Jamón, salami, salchicha y chorizo", p: [115,160,180,200,290], img: "carnes-frias.jpg", tone: "carne" },
-        { name: "Hawaiana", desc: "Jamón con piña", p: [115,160,180,200,290], img: "hawaiana.jpg", tone: "hawaiana" },
-        { name: "Cuaresma", desc: "Champiñón, atún y cebolla", p: [115,160,180,200,290], img: "cuaresma.jpg", tone: "atun" },
-        { name: "Vegetariana", desc: "Champiñón, pimiento, cebolla y lechuga", p: [115,160,180,200,290], img: "vegetariana.jpg", tone: "veg" },
-        { name: "Ranchera", desc: "Jamón, chorizo, cebolla, jitomate y jalapeño", p: [115,160,180,200,290], img: "ranchera.jpg", tone: "carne" },
-        { name: "Exótica", desc: "Combinación de 3 quesos, carne molida y jalapeños", p: [115,160,180,200,290], img: "exotica.jpg", tone: "molida" },
-        { name: "Caprichosa", desc: "Salami, tocino, pimiento, jitomate y orégano", p: [115,160,180,200,290], img: "caprichosa.jpg", tone: "mix" },
-        { name: "Al pastor", desc: "Carne al pastor con o sin piña", p: [115,160,180,200,290], img: "al-pastor.jpg", tone: "pastor" },
-        { name: "Especial de atún", desc: "Atún, jitomate y jalapeños", p: [115,160,180,200,290], img: "especial-de-atun.jpg", tone: "atun" },
-        { name: "Camarones", desc: "Solos o con champiñones", p: [140,175,180,200,290], img: "camarones.jpg", tone: "camaron", season: true },
-        { name: "Marinera", desc: "Camarones, atún, pimiento y cebolla", p: [155,185,210,220,355], img: "marinera.jpg", tone: "camaron", season: true }
+        { name: "Natural", desc: "Salsa italiana, queso y especias", p: [60,115,160,180,200,290], img: "natural.jpg", tone: "natural" },
+        { name: "Jamón de pierna", desc: "", p: [60,115,160,160,200,290], img: "jamon-de-pierna.jpg", tone: "jamon" },
+        { name: "Salami italiano", desc: "", p: [60,115,160,160,200,290], img: "salami-italiano.jpg", tone: "pepperoni" },
+        { name: "Cebollas españolas", desc: "", p: [60,115,160,160,200,290], img: "cebollas-espanolas.jpg", tone: "cebolla" },
+        { name: "Champiñones al ajillo", desc: "O solos", p: [60,115,160,180,200,290], img: "champinones-al-ajillo.jpg", tone: "champinon" },
+        { name: "Tocino y cebolla", desc: "", p: [60,115,160,180,200,290], img: "tocino-y-cebolla.jpg", tone: "tocino" },
+        { name: "Pepperoni", desc: "", p: [60,115,160,180,200,290], img: "pepperoni.jpg", tone: "pepperoni" },
+        { name: "Mercy's Especial", desc: "Un poco de todo", p: [60,115,160,180,200,290], img: "mercys-especial.jpg", tone: "mix" },
+        { name: "Carnes frías selectas", desc: "Jamón, salami, salchicha y chorizo", p: [60,115,160,180,200,290], img: "carnes-frias.jpg", tone: "carne" },
+        { name: "Hawaiana", desc: "Jamón con piña", p: [60,115,160,180,200,290], img: "hawaiana.jpg", tone: "hawaiana" },
+        { name: "Cuaresma", desc: "Champiñón, atún y cebolla", p: [60,115,160,180,200,290], img: "cuaresma.jpg", tone: "atun" },
+        { name: "Vegetariana", desc: "Champiñón, pimiento, cebolla y lechuga", p: [60,115,160,180,200,290], img: "vegetariana.jpg", tone: "veg" },
+        { name: "Ranchera", desc: "Jamón, chorizo, cebolla, jitomate y jalapeño", p: [60,115,160,180,200,290], img: "ranchera.jpg", tone: "carne" },
+        { name: "Exótica", desc: "Combinación de 3 quesos, carne molida y jalapeños", p: [60,115,160,180,200,290], img: "exotica.jpg", tone: "molida" },
+        { name: "Caprichosa", desc: "Salami, tocino, pimiento, jitomate y orégano", p: [60,115,160,180,200,290], img: "caprichosa.jpg", tone: "mix" },
+        { name: "Al pastor", desc: "Carne al pastor con o sin piña", p: [60,115,160,180,200,290], img: "al-pastor.jpg", tone: "pastor" },
+        { name: "Especial de atún", desc: "Atún, jitomate y jalapeños", p: [60,115,160,180,200,290], img: "especial-de-atun.jpg", tone: "atun" },
+        { name: "Camarones", desc: "Solos o con champiñones", p: [60,140,175,180,200,290], img: "camarones.jpg", tone: "camaron", season: true },
+        { name: "Marinera", desc: "Camarones, atún, pimiento y cebolla", p: [60,155,185,210,220,355], img: "marinera.jpg", tone: "camaron", season: true }
       ]
     },
     {

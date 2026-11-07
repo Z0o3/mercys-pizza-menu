@@ -1,5 +1,5 @@
 (function () {
-  var M = window.MENU, KEY = "mercys-cart-v1";
+  var M = window.MENU, KEY = "mercys-cart-v2";
   var money = function (n) { return "$" + n.toLocaleString("es-MX"); };
   var wa = function (t) { return "https://wa.me/" + M.whatsapp + "?text=" + encodeURIComponent(t); };
   var $ = function (id) { return document.getElementById(id); };
@@ -17,11 +17,14 @@
   function svgUri(body) {
     return "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#F6EAD2"/>' + body + "</svg>");
   }
-  function art(kind, tone) {
+  function art(kind, tone, shape) {
     var t = TONES[tone] || TONES.natural, b = "";
     if (kind === "pizza") {            /* pizza cuadrada */
-      b = '<rect x="6" y="6" width="88" height="88" rx="9" fill="#D9964B"/><rect x="12" y="12" width="76" height="76" rx="6" fill="#C8362B"/><rect x="15" y="15" width="70" height="70" rx="4" fill="#F7D57E"/>';
+      b = shape === "round"
+          ? '<circle cx="50" cy="50" r="46" fill="#D9964B"/><circle cx="50" cy="50" r="41" fill="#C8362B"/><circle cx="50" cy="50" r="38" fill="#F7D57E"/>'
+          : '<rect x="6" y="6" width="88" height="88" rx="9" fill="#D9964B"/><rect x="12" y="12" width="76" height="76" rx="6" fill="#C8362B"/><rect x="15" y="15" width="70" height="70" rx="4" fill="#F7D57E"/>';
       DOTS.forEach(function (p, i) { b += '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="' + (i % 3 === 0 ? 6.5 : 5.2) + '" fill="' + t[i % t.length] + '"/>'; });
+      if (shape === "round") b += '<path d="M50 12V88M17 31L83 69M83 31L17 69" stroke="#9E1522" stroke-width="1.4" opacity=".55"/>';
     } else if (kind === "pasta") {
       var sauce = tone === "bolonesa" ? "#C8362B" : "#F7D57E";
       b = '<circle cx="50" cy="50" r="44" fill="#fff" stroke="#D8CBB0" stroke-width="2"/><circle cx="50" cy="50" r="34" fill="#F4E7C6"/>' +
@@ -58,10 +61,12 @@
   function card(si, ii, sec, it) {
     var chips = "";
     if (it.p.length > 1) {
-      chips = '<div class="sizes" role="group" aria-label="Tamaño de ' + it.name + '">' + sec.sizes.map(function (s, i) {
-        var cm = sec.cm && sec.cm[i] ? '<span class="cm">' + sec.cm[i] + "</span>" : "";
-        return '<button type="button" class="size" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><span class="lbl">' + s + '</span><span class="pr">' + money(it.p[i]) + "</span>" + cm + "</button>";
-      }).join("") + "</div>";
+      var def = sec.def || 0;
+      chips = '<div class="sizes n' + sec.sizes.length + '" role="group" aria-label="Tamaño de ' + it.name + '">' + sec.sizes.map(function (s, i) {
+        var d = sec.details && sec.details[i];
+        var pc = d ? '<span class="pc">' + d.n + (d.shape === "round" ? " reb." : " porc.") + "</span>" : "";
+        return '<button type="button" class="size" data-i="' + i + '" aria-pressed="' + (i === def) + '"><span class="lbl">' + s + '</span><span class="pr">' + money(it.p[i]) + "</span>" + pc + "</button>";
+      }).join("") + '</div><p class="sizeinfo" hidden></p>';
     }
     return '<li class="card" data-s="' + si + '" data-i="' + ii + '">' +
         '<div class="top"><img class="thumb" src="images/' + it.img + '" alt="' + it.name + '" width="96" height="96" loading="lazy" data-kind="' + sec.kind + '" data-tone="' + (it.tone || "") + '">' +
@@ -81,10 +86,24 @@
         (sec.note ? '<span class="note">' + sec.note + "</span>" : "") + "</div>" + body + "</section>";
   }).join("");
 
-  document.querySelectorAll("img.thumb").forEach(function (img) {
-    function fb() { img.src = art(img.dataset.kind, img.dataset.tone); }
-    img.addEventListener("error", fb, { once: true });
-    if (img.complete && img.naturalWidth === 0) fb();
+  function setThumb(card, i) {
+    var sec = M.sections[card.dataset.s], it = sec.items[card.dataset.i], img = card.querySelector("img.thumb");
+    var d = sec.details && sec.details[i], shape = d ? d.shape : "square";
+    var file = shape === "round" ? (it.imgRound || "personal-" + it.img) : it.img;
+    img.classList.toggle("round", shape === "round");
+    img.onerror = function () { img.onerror = null; img.src = art(img.dataset.kind, img.dataset.tone, shape); };
+    img.src = "images/" + file;
+  }
+  function setInfo(card, i) {
+    var sec = M.sections[card.dataset.s], d = sec.details && sec.details[i], el = card.querySelector(".sizeinfo");
+    if (!el) return;
+    if (!d) { el.hidden = true; return; }
+    el.textContent = sec.sizes[i] + ": " + (d.shape === "round" ? "redonda" : "cuadrada") + (d.cm ? ", " + d.cm : "") + ", " + d.n + (d.shape === "round" ? " rebanadas" : " porciones");
+    el.hidden = false;
+  }
+  document.querySelectorAll(".card").forEach(function (c) {
+    var sel = c.querySelector("button.size[aria-pressed='true']"), i = sel ? +sel.dataset.i : 0;
+    setThumb(c, i); setInfo(c, i);
   });
   var logo = document.querySelector(".logo");
   logo.addEventListener("error", function () { logo.style.display = "none"; });
@@ -105,7 +124,9 @@
   $("menu").addEventListener("click", function (e) {
     var chip = e.target.closest("button.size"), addBtn = e.target.closest("button.add"), plus = e.target.closest("button.plus");
     if (chip) {
-      chip.closest(".card").querySelectorAll("button.size").forEach(function (b) { b.setAttribute("aria-pressed", b === chip); });
+      var cd = chip.closest(".card");
+      cd.querySelectorAll("button.size").forEach(function (b) { b.setAttribute("aria-pressed", b === chip); });
+      setThumb(cd, +chip.dataset.i); setInfo(cd, +chip.dataset.i);
     } else if (addBtn) {
       var c = addBtn.closest(".card"), sel = c.querySelector("button.size[aria-pressed='true']");
       add(c.dataset.s + ":" + c.dataset.i + ":" + (sel ? sel.dataset.i : 0));
